@@ -5,7 +5,7 @@
   "height": 600,
   "projection": {"type": "equirectangular"},
   "data": {
-    "url": "https://raw.githubusercontent.com/upat0003/FIT3179_HW/main/json/custom.topojson",
+    "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/js/custom.topojson",
     "format": {"type": "topojson", "feature": "custom"}
   },
   "transform": [
@@ -13,7 +13,7 @@
       "lookup": "properties.name_sort",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/upat0003/FIT3179_HW/main/data/Cancer.Atlas.csv"
+          "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
         },
         "key": "Country or Territory",
         "fields": ["Cancers attributable to infections"]
