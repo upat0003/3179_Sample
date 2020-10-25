@@ -13,8 +13,14 @@
   
 </head>
 <body>
+  
+<h1>Cancer exploration study Visualisations</h1>
 
-<div id="symbol_map"></div>
+<h2>Choropleth map for the overall distribution</h2>
+<div id="choropleth_map"></div>
+
+<h2>Bar chart showing the death caused due to cancer and alcohol consumption</h2>
+<div id="bar_chart"></div>
 
 
 <script type="text/javascript">
@@ -25,11 +31,11 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
   
-  //var vis2 = "https://upat0003.github.io/FIT3179_HW/json/bubble_chart.json";
+  var vis2 = "https://upat0003.github.io/FIT3179_HW/json/visualization.bar.json";
   
-  //vegaEmbed('#bubble_chart', vis2).then(function(result) {
+  vegaEmbed('#bubble_chart', vis2).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-  //}).catch(console.error);
+  }).catch(console.error);
 </script>
     
 </body>
