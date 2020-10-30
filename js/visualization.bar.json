@@ -37,7 +37,7 @@
     }
   ],
   "encoding": {
-    "x": {"field": "Country or Territory", "title": "Month of the year"},
+    "x": {"field": "Country or Territory", "title": "Countries"},
     "y": {
       "field": "Cancer deaths to alcohol",
       "aggregate": "average",
