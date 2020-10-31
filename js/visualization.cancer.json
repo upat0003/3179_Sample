@@ -1,127 +1,40 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Prevalence of Cancer attributable to infections (%), by   country [2017]",
+  "title": "Prevalence of Cancer attributable to infections (%), by country [2017]",
   "width": 800,
   "height": 600,
+  "projection": {"type": "equirectangular"},
   "data": {
-    "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
+    "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/js/custom.topojson",
+    "format": {"type": "topojson", "feature": "custom"}
   },
-
-  "params": [
-    {
-      "name": "Country_selection",
-      "bind": {
-        "input": "select",
-        "options": [
-          null,
-          "India",
-          "United States of America",
-          "China",
-          "Australia",
-          "Canada"
-        ],
-        "labels": [
-          "Show All",
-          "India",
-          "United States of America",
-          "China",
-          "Australia",
-          "Canada"
-        ],
-        "name": "Country Selection: "
-      }
-    }
-  ],
-
   "transform": [
-   
-      {
-        "filter": "datum['Country or Territory'] == 'China' || datum['Country or Territory'] =='India' || datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'United States of America' || datum['Country or Territory'] == 'Canada'"
-    
+    {
+      "lookup": "properties.name_sort",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
+        },
+        "key": "Country or Territory",
+        "fields": ["Cancers attributable to infections"]
       }
+    }
   ],
+  "mark": {"type": "geoshape"},
   "encoding": {
-    "x": {"field": "Country or Territory", "title": "Country"},
-    "y": {
-      "field": "Cancer deaths to alcohol",
-      "aggregate": "average",
-      "type": "quantitative"
-    }
-  },
-  "layer": [
-    {
-      "selection": {
-        "country_highlight": {
-          "type": "multi",
-          "fields": ["Country or Territory"],
-          "bind": "legend"
-        }
-      },
-      "mark": "bar",
-      "encoding": {
-        "size": {
-          "field": "Cancer deaths to alcohol",
-          "type": "quantitative",
-          "scale": {"type": "threshold", "range": [0,70]},
-          "legend": {"format": ".1s"}
-        },
-        "color": {
-          "field": "Country or Territory",
-          "scale": {
-            "domain": [
-              "India",
-              "Australia",
-              "China",
-              "United States of America",
-              "Canada"
-            ],
-            "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd"]
-          },
-          "title": "Country name"
-        },
-        "opacity": {
-          "condition": {"selection": "country_highlight", "value": 0.6},
-          "value": 0.2
-        },
-        "tooltip": [
-          {"field": "Country or Territory", "type": "nominal"},
-          {
-            "field": "Cancer deaths to alcohol",
-            "type": "quantitative",
-            "format": ","
-          }
-        ]
-      }
+    "color": {
+      "field": "Cancers attributable to infections",
+      "type": "quantitative",
+      "scale": {"type": "linear"}
     },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "line-bottom",
-        "dx": 10,
-        "fontSize": 11.5,
-        "fontStyle": "italic"
-      },
-      "encoding": {
-        "text": {"field": "Country or Territory", "type": "nominal"},
-        "color": {"value": "black"},
-        "opacity": {
-          "condition": {
-            "test": "datum['Country or Territory'] == 'China' || datum['Country or Territory'] =='India' || datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'United States of America' || datum['Country or Territory'] == 'Canada'",
-            "value": 1
-          },
-          "value": 0
-        },
-        "tooltip": [
-          {"field": "Country or Territory", "type": "nominal"},
-          {
-            "field": "Cancer deaths to alcohol",
-            "type": "quantitative",
-            "format": ","
-          }
-        ]
+    "tooltip": [
+      {"field": "properties.name_sort", "type": "nominal", "title": "Country"},
+      {
+        "field": "Cancers attributable to infections",
+        "type": "quantitative",
+        "title": "Cancer infections"
       }
-    }
-  ],
+    ]
+  },
   "config": {}
 }
