@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "Prevalence of Cancer attributable to infections (%), by   country [2017]",
-  "width": 800,
-  "height": 600,
+  "width": 500,
+  "height": 300,
   "data": {
     "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
   },
@@ -41,8 +41,8 @@
       }
   ],
   "encoding": {
-    "x": {"field": "Country or Territory", "title": "Country"},
-    "y": {
+    "y": {"field": "Country or Territory", "title": "Country"},
+    "x": {
       "field": "Cancer deaths to alcohol",
       "aggregate": "average",
       "type": "quantitative"
@@ -62,7 +62,7 @@
         "size": {
           "field": "Cancer deaths to alcohol",
           "type": "quantitative",
-          "scale": {"type": "threshold", "range": [0,70]},
+          "scale": {"type": "threshold", "range": [0,50]},
           "legend": {"format": ".1s"}
         },
         "color": {
