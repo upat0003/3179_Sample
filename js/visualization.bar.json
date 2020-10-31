@@ -6,6 +6,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
   },
+
   "params": [
     {
       "name": "Country_selection",
@@ -31,13 +32,16 @@
       }
     }
   ],
+
   "transform": [
-    {
-      "filter": "Country_selection == null || datum.Country ==  Country_selection"
-    }
+   
+      {
+        "filter": "datum['Country or Territory'] == 'China' || datum['Country or Territory'] =='India' || datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'United States of America' || datum['Country or Territory'] == 'Canada'"
+    
+      }
   ],
   "encoding": {
-    "x": {"field": "Country or Territory", "title": "Countries"},
+    "x": {"field": "Country or Territory", "title": "Country"},
     "y": {
       "field": "Cancer deaths to alcohol",
       "aggregate": "average",
@@ -58,7 +62,7 @@
         "size": {
           "field": "Cancer deaths to alcohol",
           "type": "quantitative",
-          "scale": {"type": "threshold", "range": [0, 2, 4, 6, 8, 10]},
+          "scale": {"type": "threshold", "range": [0,70]},
           "legend": {"format": ".1s"}
         },
         "color": {
@@ -92,8 +96,8 @@
     {
       "mark": {
         "type": "text",
-        "align": "left",
-        "baseline": "middle",
+        "align": "center",
+        "baseline": "line-bottom",
         "dx": 10,
         "fontSize": 11.5,
         "fontStyle": "italic"
