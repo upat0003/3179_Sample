@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
   "title": "Prevalence of Cancer attributable to infections (%), by   country [2017]",
-  "width": 500,
-  "height": 300,
+  "width": 700,
+  "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
   },
@@ -14,19 +14,30 @@
         "input": "select",
         "options": [
           null,
-          "India",
-          "United States of America",
-          "China",
           "Australia",
-          "Canada"
+          "China",
+          "Eswatini",
+          "Guatemala",
+          "India",
+          "Mexico",
+          "Switzerland",
+          "United Kingdom",
+          "United States of America",
+          "Zimbabwe"
         ],
         "labels": [
           "Show All",
-          "India",
-          "United States of America",
-          "China",
           "Australia",
-          "Canada"
+          "China",
+          "Eswatini",
+          "Guatemala",
+          "India",
+          "Mexico",
+          "Switzerland",
+          "United Kingdom",
+          "United States of America",
+          "Vietnam",
+          "Zimbabwe"
         ],
         "name": "Country Selection: "
       }
@@ -36,15 +47,15 @@
   "transform": [
    
       {
-        "filter": "datum['Country or Territory'] == 'China' || datum['Country or Territory'] =='India' || datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'United States of America' || datum['Country or Territory'] == 'Canada'"
+        "filter": "datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'China' || datum['Country or Territory'] == 'Eswatini' || datum['Country or Territory'] == 'Guatemala' || datum['Country or Territory'] == 'India' || datum['Country or Territory'] == 'Mexico' || datum['Country or Territory'] == 'Switzerland' || datum['Country or Territory'] == 'United Kingdom' || datum['Country or Territory'] == 'United States of America' || datum['Country or Territory'] =='Zimbabwe'"
     
       }
   ],
   "encoding": {
-    "y": {"field": "Country or Territory", "title": "Country"},
+    "y": {"field": "Country or Territory", "title": "Country", "sort": "-x"},
     "x": {
       "field": "Cancer deaths to alcohol",
-      "aggregate": "average",
+      "aggregate": "sum",
       "type": "quantitative"
     }
   },
@@ -59,23 +70,24 @@
       },
       "mark": "bar",
       "encoding": {
-        "size": {
-          "field": "Cancer deaths to alcohol",
-          "type": "quantitative",
-          "scale": {"type": "threshold", "range": [0,50]},
-          "legend": {"format": ".1s"}
-        },
         "color": {
           "field": "Country or Territory",
           "scale": {
             "domain": [
-              "India",
-              "Australia",
-              "China",
-              "United States of America",
-              "Canada"
+            "Australia",
+            "China",
+            "Eswatini",
+            "Guatemala",
+            "India",
+            "Mexico",
+            "Switzerland",
+            "United Kingdom",
+            "United States of America",
+            "Zimbabwe"
             ],
-            "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd"]
+          
+
+          "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"]
           },
           "title": "Country name"
         },
@@ -92,36 +104,8 @@
           }
         ]
       }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "baseline": "line-bottom",
-        "dx": 10,
-        "fontSize": 11.5,
-        "fontStyle": "italic"
-      },
-      "encoding": {
-        "text": {"field": "Country or Territory", "type": "nominal"},
-        "color": {"value": "black"},
-        "opacity": {
-          "condition": {
-            "test": "datum['Country or Territory'] == 'China' || datum['Country or Territory'] =='India' || datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'United States of America' || datum['Country or Territory'] == 'Canada'",
-            "value": 1
-          },
-          "value": 0
-        },
-        "tooltip": [
-          {"field": "Country or Territory", "type": "nominal"},
-          {
-            "field": "Cancer deaths to alcohol",
-            "type": "quantitative",
-            "format": ","
-          }
-        ]
-      }
     }
+    
   ],
   "config": {}
 }
