@@ -16,25 +16,27 @@
           "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
         },
         "key": "Country or Territory",
-        "fields": ["Cancers attributable to infections"]
+        "fields": ["Lung cancer incidence rates, female_Age-standardized rate (world) per 100,000, all ages, 2018"]
       }
     }
   ],
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
-      "field": "Cancers attributable to infections",
+      "field": "Lung cancer incidence rates, female_Age-standardized rate (world) per 100,000, all ages, 2018",
       "type": "quantitative",
-      "scale": {"type": "linear",
-        "domain": [0, 15, 30, 50],
-        "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]}
+      "scale": {
+        "type": "linear",
+        "domain": [0,10,25,40],
+        "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+      }
     },
     "tooltip": [
       {"field": "properties.name_sort", "type": "nominal", "title": "Country"},
       {
-        "field": "Cancers attributable to infections",
+        "field": "Lung cancer incidence rates, female_Age-standardized rate (world) per 100,000, all ages, 2018",
         "type": "quantitative",
-        "title": "Cancer infections"
+        "title": "Lung cancer incidence rates for female [%]"
       }
     ]
   },
