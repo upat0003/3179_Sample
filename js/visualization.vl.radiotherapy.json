@@ -1,7 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Prevalence of Cancer attributable to infections (%), by country [2017]",
-  "width": "container",
+  "title": "Radiotherapy Availability Rate per 1000 patients [2017]",
+  "width": 500,
+  "height": 400,
   "projection": {"type": "equirectangular"},
   "data": {
     "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/js/custom.topojson",
@@ -26,7 +27,11 @@
     "color": {
       "field": "Radiotherapy availability_Number of radiotherapy machines per 1,000 cancer patients",
       "type": "quantitative",
-      "scale": {"type": "linear"}
+      "scale": {
+        "type": "linear",
+        "domain": [0,1,2],
+        "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+      }
     },
     "tooltip": [
       {"field": "properties.name_sort", "type": "nominal", "title": "Country"},
