@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Prevalence of Cancer attributable to infections (%), by country [2017]",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'India' || datum['Country or Territory'] == 'Switzerland' || datum['Country or Territory'] == 'United Kingdom' || datum['Country or Territory'] == 'United States of America'"
+    }
+  ],
+  "layer": [
+    {
+      "selection": {
+        "country_highlight": {
+          "type": "multi",
+          "fields": ["Country or Territory"],
+          "bind": "legend"
+        }
+      },
+      "mark": {"type": "arc"},
+      "encoding": {
+        "theta": {
+          "field": "Melanoma skin cancer incidence",
+          "type": "quantitative",
+          "stack": true
+        },
+        "color": {
+          "field": "Country or Territory",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Australia",
+              "India",
+              "Switzerland",
+              "United Kingdom",
+              "United States of America"
+            ],
+            "range": ["#1f77b4", "#9467bd", "#e377c2", "#7f7f7f", "#bcbd22"]
+          }
+        },
+        "opacity": {
+          "condition": {"selection": "country_highlight", "value": 0.6},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Country or Territory", "type": "nominal"},
+          {
+            "field": "Melanoma skin cancer incidence",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "radius": 90},
+      "encoding": {"text": {"field": "Country or Territory", "type": "nominal"}}
+    }
+  ],
+  "view": {"stroke": null},
+  "config": {}
+}

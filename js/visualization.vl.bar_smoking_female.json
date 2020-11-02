@@ -1,0 +1,115 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "title": "Prevalence of Cancer attributable to infections (%), by   country [2017]",
+  "width": 700,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
+  },
+  "params": [
+    {
+      "name": "Country_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "Australia",
+          "China",
+          "Eswatini",
+          "Guatemala",
+          "India",
+          "Mexico",
+          "Switzerland",
+          "United Kingdom",
+          "United States of America",
+          "Zimbabwe"
+        ],
+        "labels": [
+          "Show All",
+          "Australia",
+          "China",
+          "Eswatini",
+          "Guatemala",
+          "India",
+          "Mexico",
+          "Switzerland",
+          "United Kingdom",
+          "United States of America",
+          "Vietnam",
+          "Zimbabwe"
+        ],
+        "name": "Country Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'China' || datum['Country or Territory'] == 'Eswatini' || datum['Country or Territory'] == 'Guatemala' || datum['Country or Territory'] == 'India' || datum['Country or Territory'] == 'Mexico' || datum['Country or Territory'] == 'Switzerland' || datum['Country or Territory'] == 'United Kingdom' || datum['Country or Territory'] == 'United States of America' || datum['Country or Territory'] =='Zimbabwe'"
+    }
+  ],
+  "encoding": {
+    "x": {"field": "Country or Territory", "title": "Country", "sort": "-x"},
+    "y": {
+      "field": "Smoking prevalence female",
+      "aggregate": "sum",
+      "type": "quantitative"
+    }
+  },
+  "layer": [
+    {
+      "selection": {
+        "country_highlight": {
+          "type": "multi",
+          "fields": ["Country or Territory"],
+          "bind": "legend"
+        }
+      },
+      "mark": "bar",
+      "encoding": {
+        "color": {
+          "field": "Country or Territory",
+          "scale": {
+            "domain": [
+              "Australia",
+              "China",
+              "Eswatini",
+              "Guatemala",
+              "India",
+              "Mexico",
+              "Switzerland",
+              "United Kingdom",
+              "United States of America",
+              "Zimbabwe"
+            ],
+            "range": [
+              "#1f77b4",
+              "#ff7f0e",
+              "#2ca02c",
+              "#d62728",
+              "#9467bd",
+              "#8c564b",
+              "#e377c2",
+              "#7f7f7f",
+              "#bcbd22",
+              "#17becf"
+            ]
+          },
+          "title": "Country name"
+        },
+        "opacity": {
+          "condition": {"selection": "country_highlight", "value": 0.6},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Country or Territory", "type": "nominal"},
+          {
+            "field": "Smoking prevalence female",
+            "type": "quantitative",
+            "format": ","
+          }
+        ]
+      }
+    }
+  ],
+  "config": {}
+}
