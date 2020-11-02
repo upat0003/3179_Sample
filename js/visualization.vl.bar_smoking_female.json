@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "title": "Prevalence of Cancer attributable to infections (%), by   country [2017]",
+  "title": "Prevalence of Smoking Rate [%] by Female [2017]",
   "width": "container",
   "data": {
     "url": "https://raw.githubusercontent.com/upat0003/3179_Sample/main/data/Cancer.Atlas.csv"
@@ -50,6 +50,7 @@
     "x": {"field": "Country or Territory", "title": "Country", "sort": "-x"},
     "y": {
       "field": "Smoking prevalence female",
+      "title": "Smoking prevalence",
       "aggregate": "sum",
       "type": "quantitative"
     }
