@@ -48,6 +48,9 @@
       {
         "filter": "datum['Country or Territory'] == 'Australia' || datum['Country or Territory'] == 'China' || datum['Country or Territory'] == 'Eswatini' || datum['Country or Territory'] == 'Guatemala' || datum['Country or Territory'] == 'India' || datum['Country or Territory'] == 'Mexico' || datum['Country or Territory'] == 'Switzerland' || datum['Country or Territory'] == 'United Kingdom' || datum['Country or Territory'] == 'United States of America' || datum['Country or Territory'] =='Zimbabwe'"
     
+      },
+      {
+        "filter": "Country_selection == null || datum['Country or Territory'] == Country_selection"
       }
   ],
   "encoding": {
@@ -93,6 +96,7 @@
         },
         "opacity": {
           "condition": {"selection": "country_highlight", "value": 0.6},
+          
           "value": 0.2
         },
         "tooltip": [
